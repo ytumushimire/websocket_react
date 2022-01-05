@@ -3,7 +3,7 @@ import W3CWebSocket from 'websocket'
 export default class App extends Component {
 
   componentDidMount() {
-    const ws = new W3CWebSocket.w3cwebsocket('ws://172.16.20.241:8000/ws/statistics/?api_key=SHPCzFqb.1Wi9Mkn3VPQuT3SQ6F5Y1EhzFeYaVW4O')
+    const ws = new W3CWebSocket.w3cwebsocket(`${process.env.REACT_APP_WS_URL}/ws/statistics/?api_key=${process.env.REACT_APP_API_KEY}`)
     ws.onopen = () => {
       ws.send(JSON.stringify({ 'api_key': 'SHPCzFqb.1Wi9Mkn3VPQuT3SQ6F5Y1EhzFeYaVW4O' }))
       console.log('connection open')
